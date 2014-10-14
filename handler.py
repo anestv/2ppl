@@ -1,5 +1,4 @@
 """DON'T MODIFY THIS FILE"""
-
 import webapp2, jinja2, os, hashlib, re, random, string, hashlib, models
 
 from models import User
@@ -74,12 +73,18 @@ class Handler(webapp2.RequestHandler):
 		self.set_cookie('user_id', "")
 
 	def register(self, username, password, email):
-		pw = make_pw_hash(username, password)
-		user = User(username=username, password=pw, email=email)
-		user.put()
-		user_id = user.key().id()
-		self.set_cookie('user_id', user_id)
-		self.redirect('/')
+		user = User.all().filter('username =', username).get()
+		if user == None:
+			pw = make_pw_hash(username, password)
+			user = User(username=username, password=pw, email=email, is_admin=False)
+			user.put()
+			user_id = user.key().id()
+			self.set_cookie('user_id', user_id)
+			self.redirect('/')
+		else:
+			error = 'The user allready exists'
+			random = make_salt()
+			self.render('register', username=username, email=email, error=error, random=random)
 
 	def initialize(self, *a, **kw):
         	webapp2.RequestHandler.initialize(self, *a, **kw)
@@ -99,21 +104,20 @@ def valid_user(username):
 	if username:
 		return USER_RE.match(username)
 
-def valid_pw(password):
-	if password:
-		return PW_RE.match(password)
+def valid_pw(password ,verify):
+	if password and PW_RE.match(password) and password==verify:
+		return True
 
 def valid_mail(email):
 	if email:
 		return MAIL_RE.match(email)
 
-def valid(username, password, email=None):
+def valid_register(username, password, verify, email):
 	user = valid_user(username)
-	pw = valid_pw(password)
-	if user and pw:
-		if email and valid_mail(email):
-			return True
-		elif email and not valid_mail(email):
-			return None
-		else:
-			return True
+	pw = valid_pw(password, verify)
+	email = valid_mail(email)
+	if user and pw and email:
+		return True
+	else:
+		return False
+
