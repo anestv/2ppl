@@ -12,7 +12,7 @@ handlers:
   static_dir: templates/js
 
 - url: /.*
-  script: urls.application
+  script: urls.app
 
 libraries:
 - name: webapp2
