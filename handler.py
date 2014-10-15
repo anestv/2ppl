@@ -71,6 +71,7 @@ class Handler(webapp2.RequestHandler):
 
 	def logout(self):
 		self.set_cookie('user_id', "")
+		self.redirect('/')
 
 	def register(self, username, password, email, user):
 		user = User.all().filter('username =', username).get()
