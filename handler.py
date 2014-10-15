@@ -76,7 +76,7 @@ class Handler(webapp2.RequestHandler):
 		user = User.all().filter('username =', username).get()
 		if user == None:
 			pw = make_pw_hash(username, password)
-			user = User(username=username, password=pw, email=email, type_of_user=user)
+			user = User(username=username, password=pw, email=email, type_of_user='admin')
 			user.put()
 			user_id = user.key().id()
 			self.set_cookie('user_id', user_id)
