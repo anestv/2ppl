@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+  <meta charset="utf-8">
+</head>
+<body>
+  
+  <h3 class="ui orangeBg top attached header">Log in</h3>
+  <form method="POST" class="ui attached form segment">
+    <div class="ui left field icon input">
+      <input name="user" required type="text" placeholder="Username" tabindex="1" autofocus>
+      <i class="user icon"></i>
+    </div>
+    <div class="ui left field icon input">
+      <input name="pass" required type="password" placeholder="Password" tabindex="2">
+      <i class="lock icon"></i>
+    </div>
+    <button type="submit" class="ui right floated labeled icon positive button" tabindex="4">
+      <i class="sign in icon"></i>Log in
+    </button>
+    <div class="ui toggle checkbox">
+      <input type="checkbox" name="keep" id="keep" tabindex="3">
+      <label for="keep">Keep me logged in</label>
+    </div>
+  </form>
+  <div class="ui bottom attached icon message">
+    <i class="signup icon"></i><div class="content">
+      <div class="header">New here?</div>
+      <a href="register.html">Register Here</a>
+  </div></div>
+  
+</body>
+</html>
