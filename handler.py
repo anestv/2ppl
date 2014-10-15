@@ -60,7 +60,7 @@ class Handler(webapp2.RequestHandler):
 	def login(self, username, password):
 		user = User.all().filter('username =', username).get()
 		if user == None:
-			error = 'The username doesn\'t exist'
+			error = 'The user doesn\'t exist'
 			self.render('login', error=error, username=username, password=password)
 		elif user.username == username and is_valid_pw(username, password, user.password):
 			self.set_cookie('user_id', user.key().id())
@@ -72,11 +72,11 @@ class Handler(webapp2.RequestHandler):
 	def logout(self):
 		self.set_cookie('user_id', "")
 
-	def register(self, username, password, email):
+	def register(self, username, password, email, user):
 		user = User.all().filter('username =', username).get()
 		if user == None:
 			pw = make_pw_hash(username, password)
-			user = User(username=username, password=pw, email=email, is_admin=False)
+			user = User(username=username, password=pw, email=email, type_of_user=user)
 			user.put()
 			user_id = user.key().id()
 			self.set_cookie('user_id', user_id)
