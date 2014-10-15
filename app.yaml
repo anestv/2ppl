@@ -11,6 +11,15 @@ handlers:
 - url: /js
   static_dir: templates/js
 
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: static/\1
+  upload: templates/images/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+- url: /fonts/(.*\.ttf)
+  static_files: css/fonts/\1
+  upload: templates/fonts/(.*\.ttf)
+  mime_type: application/x-font-ttf
+
 - url: /.*
   script: urls.application
 
