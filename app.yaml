@@ -12,11 +12,11 @@ handlers:
   static_dir: templates/js
 
 - url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
-  static_files: static/\1
+  static_files: templates/images/\1
   upload: templates/images/(.*\.(bmp|gif|ico|jpeg|jpg|png))
 
 - url: /fonts/(.*\.ttf)
-  static_files: css/fonts/\1
+  static_files: templates/fonts/\1
   upload: templates/fonts/(.*\.ttf)
   mime_type: application/x-font-ttf
 
