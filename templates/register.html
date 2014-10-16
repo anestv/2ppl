@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+  <meta charset="UTF-8">
+  <style>
+    h1.block.header {
+      font-family: 'Segoe UI', serif;
+    }
+    .ui.pointing.label,.ui.pointing.label::before {
+      background-color: #3174fc;
+      color: white;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+<main class="center940">
+
+<h1 class="ui center aligned green inverted block header top attached">
+  Create an account on Teach Hub
+</h1>
+
+<form method="post" autocomplete="off" class="ui form bottom attached segment">
+<div class="ui two column stackable grid">
+
+  <div class="column">
+    <div class="field">
+      <div class="ui pointing below label">Username</div>
+      <input type="text" maxlength="20" required name="username" placeholder="Username">
+    </div>
+    <div class="field">
+      <div class="ui pointing below label">Full Name</div>
+      <input type="text" required name="fullname" placeholder="Full Name">
+    </div>
+    <div class="field">
+      <div class="ui pointing below label">E-mail address</div>
+      <input type="email" required maxlength="100" name="email" placeholder="name@example.com">
+    </div>
+  </div>
+  <div class="column">
+    <div class="field">
+      <div class="ui pointing below label">Password</div>
+      <input type="password" maxlength="101" required name="password" placeholder="Password">
+    </div>
+    <div class="field">
+      <div class="ui pointing below label">Re-enter your password</div>
+      <input type="password" maxlength="101" required name="verify">
+    </div>
+    <div class="ui pointing below label">Account type</div>
+    <div class="inline fields">
+      <div class="inline field">
+        <div class="ui radio checkbox">
+          <input id="student" type="radio" name="type" checked value="student">
+          <label for="student">Student</label>
+        </div>
+      </div>
+      <div class="inline field">
+        <div class="ui radio checkbox">
+          <input id="teacher" type="radio" name="type" value="teacher">
+          <label for="teacher">Teacher</label>
+        </div>
+      </div>
+    </div>
+    <div class="inline field">
+      <div class="ui checkbox">
+        <input type="checkbox" required id="ToScheck" name="terms">
+        <label for="ToScheck">I agree to the <a href="terms.html">Terms and Conditions</a></label>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<button type="submit" class="ui animated fade centered positive button">
+ <div class="visible content">Register</div>
+ <div class="hidden content"><i class="signup icon"></i></div>
+</button>
+
+</form>
+</main>
+</body>
+</html>
