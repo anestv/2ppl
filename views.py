@@ -41,9 +41,14 @@ class Register(handler.Handler):
 		password = self.request.get('password')
 		verify = self.request.get('verify')
 		type_of_user = self.request.get('type')
-		
+
 		if handler.valid_register(username, password, verify, email):
 			self.register(username, name, password, email, type_of_user)
 		else:
 			error = 'The data order is not valid'
 			self.render('register', username=username, name=name, email=email, error=error)
+
+
+class Terms(handler.Handler):
+	def get(self):
+		self.render('terms')
