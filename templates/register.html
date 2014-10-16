@@ -24,19 +24,18 @@
 
 <form method="post" autocomplete="off" class="ui form bottom attached segment">
 <div class="ui two column stackable grid">
-
   <div class="column">
     <div class="field">
       <div class="ui pointing below label">Username</div>
-      <input type="text" maxlength="20" required name="username" placeholder="Username">
+      <input type="text" maxlength="20" required name="username" placeholder="Username" value='{{username}}'>
     </div>
     <div class="field">
       <div class="ui pointing below label">Full Name</div>
-      <input type="text" required name="fullname" placeholder="Full Name">
+      <input type="text" required name="fullname" placeholder="Full Name" value='{{name}}'>
     </div>
     <div class="field">
       <div class="ui pointing below label">E-mail address</div>
-      <input type="email" required maxlength="100" name="email" placeholder="name@example.com">
+      <input type="email" required maxlength="100" name="email" placeholder="name@example.com" value='{{email}}'>
     </div>
   </div>
   <div class="column">
@@ -77,7 +76,7 @@
  <div class="visible content">Register</div>
  <div class="hidden content"><i class="signup icon"></i></div>
 </button>
-
+<p style="font-weight:bold;font-size:large;color:red;">{{error}}</p>
 </form>
 </main>
 </body>

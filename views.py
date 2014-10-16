@@ -30,6 +30,20 @@ class Logout(handler.Handler):
 		self.logout()
 
 
-class Profile(handler.Handler):
+class Register(handler.Handler):
 	def get(self):
-		username = '1'
+		self.render('register')
+
+	def post(self):
+		username = self.request.get('username')
+		name = self.request.get('fullname')
+		email = self.request.get('email')
+		password = self.request.get('password')
+		verify = self.request.get('verify')
+		type_of_user = self.request.get('type')
+		
+		if handler.valid_register(username, password, verify, email):
+			self.register(username, name, password, email, type_of_user)
+		else:
+			error = 'The data order is not valid'
+			self.render('register', username=username, name=name, email=email, error=error)

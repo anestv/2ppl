@@ -73,11 +73,11 @@ class Handler(webapp2.RequestHandler):
 		self.set_cookie('user_id', "")
 		self.redirect('/')
 
-	def register(self, username, password, email, user):
+	def register(self, username, name, password, email, usertype):
 		user = User.all().filter('username =', username).get()
 		if user == None:
 			pw = make_pw_hash(username, password)
-			user = User(username=username, password=pw, email=email, type_of_user='admin')
+			user = User(username=username, name=name, password=pw, email=email, usertype=usertype)
 			user.put()
 			user_id = user.key().id()
 			self.set_cookie('user_id', user_id)
@@ -85,7 +85,7 @@ class Handler(webapp2.RequestHandler):
 		else:
 			error = 'The user allready exists'
 			random = make_salt()
-			self.render('register', username=username, email=email, error=error, random=random)
+			self.render('register', username=username, name=name, email=email, error=error)
 
 	def initialize(self, *a, **kw):
         	webapp2.RequestHandler.initialize(self, *a, **kw)
