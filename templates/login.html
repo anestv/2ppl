@@ -8,7 +8,7 @@
 <body>
   
   <h3 class="ui orangeBg top attached header">Log in to <i>Teach Hub</i></h3>
-  <form method="POST" class="ui attached form segment" action="/login">
+  <form method="POST" class="ui {% if error %}error{% endif %} attached form segment" action="/login">
     <div class="ui left field icon input">
       <input name="name" required type="text" placeholder="Username" tabindex="1" autofocus value="{{username}}">
       <i class="user icon"></i>
@@ -24,7 +24,7 @@
       <input type="checkbox" name="keep" id="keep" tabindex="3">
       <label for="keep">Keep me logged in</label>
     </div>
-    <p style='font-weight:bold;color:red;'>{{error}}</p>
+    <p class="ui error message">{{error}}</p>
   </form>
   <div class="ui bottom attached icon message">
     <i class="signup icon"></i><div class="content">
