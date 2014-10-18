@@ -22,7 +22,7 @@
   Create an account on Teach Hub
 </h1>
 
-<form method="post" class="ui {% if error %}error{% endif } form bottom attached segment">
+<form method="post" class="ui error form bottom attached segment">
 <div class="ui two column stackable grid">
   <div class="column">
     <div class="field">
@@ -66,9 +66,12 @@
       <label class="ui blue label">By signing up I accept the <a href="/terms">Terms and Conditions</a></label>
     </div>
   </div>
-  
 </div>
-<p class="ui error message">{{error}}</p>
+{% if error %}
+	<br>
+	<br>
+	<p class="ui error message" style="pading:5vw;">{{error}}</p>
+{% endif %}
 
 <button type="submit" class="ui animated fade centered positive button">
  <div class="visible content">Register</div>
