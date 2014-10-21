@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+    <link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+    <style>
+      nav.ui.menu {
+        border-radius: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
   </head>
   <body>
-    <!-- Add header -->
+    {% if accounttype == "student" %}
+    <nav class="ui six item blue inverted fluid menu">
+      <a class="item" href="/"><i class="home icon"></i>Home</a>
+      <a class="item" href=""><i class="browser icon"></i>Browse</a>
+      <a class="item" href=""><i class="search icon"></i> Search</a>
+      <a class="item" href=""><i class="book icon"></i>Homework</a>
+      <a class="item" href="/settings"><i class="setting icon"></i>Settings</a>
+      <a class="item" href="/logout"><i class="sign out icon"></i>Log out</a>
+    </nav>
+    {% else %}
+    <nav class="ui six item blue inverted fluid menu">
+      <a class="item" href="/"><i class="home icon"></i>Home</a>
+      <a class="item" href=""><i class="users icon"></i>Students</a>
+      <a class="item" href=""><i class="search icon"></i> Search</a>
+      <a class="item" href=""><i class="book icon"></i>Classes</a>
+      <a class="item" href="/settings"><i class="setting icon"></i>Settings</a>
+      <a class="item" href="/logout"><i class="sign out icon"></i>Log out</a>
+    </nav>
+    {% endif %}
+    
     {% block register %}
     {% endblock %}
     <!--add footer -->
