@@ -6,8 +6,7 @@ class MainPage(handler.Handler):
 		user_id = self.get_cookie('user_id')
 		if user_id: 
 			user = models.User.get_by_id(int(user_id))
-			self.write('Hello, %s'%user.username)
-			self.write('<br><a href="/logout">logout</a>')
+			self.render('home', usertype=self.user.usertype)
 		else:
 			self.render('login')
 
