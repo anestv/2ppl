@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Your classes</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/semantic.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    td:first-child, td:nth-child(3) {
+      width: 3em;
+    }
+    td:nth-child(2)>a {
+      color: #555;
+      text-decoration: underline;
+    }
+    td:nth-child(3)>a {
+      color: #AB850E;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <div class="ui top attached teal inverted header">
+      Create a new class
+    </div>
+    <form action="newclass" method="POST" class="ui form bottom attached segment">
+      <div class="field"><input type="text" name="name" placeholder="Class Name"></div>
+      <button class="ui blue button" type="button">
+        <i class="user icon"></i>
+        Add students
+      </button>
+      <button class="ui right labeled right floated icon positive button" type="submit">
+        Create
+        <i class="arrow right icon"></i>
+      </button>
+    </form>
+  <table class="ui padded table segment">
+    <tbody>
+      {% for class in classes %}
+      <tr>
+        <td>{{class.id}}</td>
+        <td><a href="class/{{class.id}}">{{class.name}}</a></td>
+        <td><a href="class/{{class.id}}/edit"><i class="pencil link icon"></i></a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot><tr><th colspan="3" class="ui info message">
+      <i class="info icon"></i>
+      {% if classes %}
+        You have {{classes|length}} classes in total
+      {% else %}
+        You have no classes
+      {% endif %}
+    </th></tr></tfoot>
+  </table>
+  </div>
+</body>
+</html>
