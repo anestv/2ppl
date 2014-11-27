@@ -1,6 +1,6 @@
 import webapp2
 
-from views import MainPage, Login, Logout, Register, Terms
+from views import MainPage, Login, Logout, Register, Classes
 
 #Add your urls here
 application = webapp2.WSGIApplication([
@@ -8,5 +8,5 @@ application = webapp2.WSGIApplication([
     ('/login', Login),
     ('/logout', Logout),
     ('/register', Register),
-    ('/terms', Terms)
+    ('/classes', Classes)
 ], debug=True)

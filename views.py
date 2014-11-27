@@ -47,7 +47,6 @@ class Register(handler.Handler):
 			error = 'The data order is not valid'
 			self.render('register', username=username, name=name, email=email, error=error)
 
-
-class Terms(handler.Handler):
+class Classes(handler.Handler):
 	def get(self):
-		self.render('terms')
+		self.render('classes')
